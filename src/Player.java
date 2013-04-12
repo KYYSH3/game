@@ -1,6 +1,4 @@
 
-import java.awt.Event;
-
 public class Player {
 	private String Name;
 	public int Health = 10;
@@ -13,7 +11,7 @@ public class Player {
 		Name=namestr;
 	}
 	public void getPlayerLook(){
-		System.out.println("Имя игрока: " + Name);
+		System.out.println(Name + ", " + Class);
 		getPlayerHealth();
 		getPlayerXp_Level();
 	}
@@ -46,4 +44,22 @@ public class Player {
 		System.out.println("Максиимально на уровне " + XpLevelMax + " опыта.");
 		System.out.println("Ваш уровень: " + Level);
 	}
+	public void presetPlayerClass(){
+		System.out.println("Выберите класс:");
+		System.out.println("   1)Студент");
+		System.out.println("   2)Аспирант");
+	}
+	
+	public void setPlayerClass(String choice){
+		if (choice.equals("1")){
+			Class = "Студент";
+		}
+		if (choice.equals("2")){
+			Class = "Аспирант";
+		}
+		else {
+			Class = "Студент";
+		}
+	}
+	
 }

@@ -23,12 +23,10 @@ public class Game {
 		System.out.println(".");
 		System.out.println("¬ведите им€ игрока: ");
 		Player1.setPlayerName(namescan.next());
-		//World NewWorld = new World();
+		Player1.presetPlayerClass();
+		Player1.setPlayerClass(namescan.next());
 		System.out.println("¬ведите h чтобы увидеть список команд");
 		while (Player1.Health != 0) {
-			//Player1.getPlayerHealth();
-			//Player1.getPlayerDamage(1);
-			//Player1.getPlayerName();
 			a=namescan.next();
 			if (a.equals("h")){
 				getHelp();	
