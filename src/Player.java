@@ -1,3 +1,5 @@
+import java.util.Random;
+
 
 public class Player {
 	private String Name;
@@ -70,6 +72,13 @@ public class Player {
 		}
 	}
 	public void walk(){
-		System.out.println("Вы никого не встретили");
+		Random r = new Random();
+		Float a = r.nextFloat();
+		if (a > 0.7) {
+			System.out.println("Вы никого не встретили ");
+		}
+		else {
+			//We'll create a new enemy there
+		}
 	}
 }
