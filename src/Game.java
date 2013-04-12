@@ -49,6 +49,9 @@ public class Game {
 				if (a.equals("b")){
 					World1.setPlayerLocation("Улица");	
 				}
+				if (a.equals("l")){
+					Player1.getPlayerLook(World1);
+				}	
 			}
 		}
 		namescan.close();
@@ -66,6 +69,7 @@ public class Game {
 		if (Loc.equals("Рынок")){
 			System.out.println(" Справка:");
 			System.out.println("   h - вызвать справку");
+			System.out.println("   l - осмотреть себя");
 			System.out.println("   b - уйти");
 		}
 	}

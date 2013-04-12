@@ -5,6 +5,7 @@ public class Player {
 	private long Xp = 0;
 	private long XpLevelMax = 10;
 	private long Level = 1;
+	private long Money = 30;
 	private String Class;
 	
 	public void setPlayerName(String namestr){
@@ -41,10 +42,16 @@ public class Player {
 		}
 	}
 	private void getPlayerXp_Level(){
-		System.out.println("У вас " + Xp + " опыта.");
-		System.out.println("Максиимально на уровне " + XpLevelMax + " опыта.");
+		System.out.println("У вас " + Xp + " опыта");
+		System.out.println("Максиимально на уровне " + XpLevelMax + " опыта");
 		System.out.println("Ваш уровень: " + Level);
+		System.out.println("У вас " + Money + " рублей");
 	}
+	
+	public long getlongPlayerMoney(){
+		return Money;
+	}
+	
 	public void presetPlayerClass(){
 		System.out.println("Выберите класс:");
 		System.out.println("   1)Студент");
