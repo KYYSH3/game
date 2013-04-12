@@ -62,5 +62,7 @@ public class Player {
 			Class = "Студент";
 		}
 	}
-	
+	public void walk(){
+		System.out.println("Вы никого не встретили");
+	}
 }

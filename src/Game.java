@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Game {
 	
-	public String version = "build3_pre";
+	public String version = "build3";
 	
 	public void returnVersion(){
 		
@@ -14,7 +14,6 @@ public class Game {
 	public void start(){
 		returnVersion();
 		String a;
-		String h = "h";
 		Player Player1 = new Player();
 		World World1 = new World();
 		Scanner namescan = new Scanner(System.in);
@@ -29,24 +28,45 @@ public class Game {
 		System.out.println("Введите h чтобы увидеть список команд");
 		while (Player1.Health != 0) {
 			a=namescan.next();
-			if (a.equals("h")){
-				getHelp();	
+			if (World1.getStringLocation().equals("Улица")){	
+				if (a.equals("h")){
+					getHelp(World1.getStringLocation());	
+				}
+				if (a.equals("w")){
+					Player1.walk();
+				}
+				if (a.equals("l")){
+					Player1.getPlayerLook(World1);
+				}	
+				if (a.equals("mar")){
+					World1.setPlayerLocation("Рынок");
+				}	
 			}
-			if (a.equals("d")){
-				Player1.getPlayerDamage(1);
+			if (World1.getStringLocation().equals("Рынок")){
+				if (a.equals("h")){
+					getHelp(World1.getStringLocation());	
+				}
+				if (a.equals("b")){
+					World1.setPlayerLocation("Улица");	
+				}
 			}
-			if (a.equals("l")){
-				Player1.getPlayerLook(World1);
-			}	
 		}
 		namescan.close();
 		System.out.print("Конец игры");
 	}
 	
-	public void getHelp(){
-		System.out.println(" Справка:");
-		System.out.println("   d - ударить себя в лицо");
-		System.out.println("   l - осмотреть себя");
-		System.out.println("   h - вызвать справку");
+	public void getHelp(String Loc){
+		if (Loc.equals("Улица")){
+			System.out.println(" Справка:");
+			System.out.println("   w - прогуляться");
+			System.out.println("   l - осмотреть себя");
+			System.out.println("   h - вызвать справку");
+			System.out.println("   mar - пойти на рынок");
+		}
+		if (Loc.equals("Рынок")){
+			System.out.println(" Справка:");
+			System.out.println("   h - вызвать справку");
+			System.out.println("   b - уйти");
+		}
 	}
 }
