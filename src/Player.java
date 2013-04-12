@@ -10,7 +10,8 @@ public class Player {
 	public void setPlayerName(String namestr){
 		Name=namestr;
 	}
-	public void getPlayerLook(){
+	public void getPlayerLook(World getworld){
+		getworld.getPlayerLocation();
 		System.out.println(Name + ", " + Class);
 		getPlayerHealth();
 		getPlayerXp_Level();

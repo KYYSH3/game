@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Game {
 	
-	public String version = "build2";
+	public String version = "build3_pre";
 	
 	public void returnVersion(){
 		
@@ -16,6 +16,7 @@ public class Game {
 		String a;
 		String h = "h";
 		Player Player1 = new Player();
+		World World1 = new World();
 		Scanner namescan = new Scanner(System.in);
 		System.out.print("Загрузка игры");
 		System.out.print(".");
@@ -35,7 +36,7 @@ public class Game {
 				Player1.getPlayerDamage(1);
 			}
 			if (a.equals("l")){
-				Player1.getPlayerLook();
+				Player1.getPlayerLook(World1);
 			}	
 		}
 		namescan.close();
