@@ -12,6 +12,6 @@ public class World {
 	
 	public void setPlayerLocation(String Loc){
 		PlayerLocation = Loc;
-		System.out.println("Вы на локации: "+ PlayerLocation);
+		getPlayerLocation();
 	}
 }

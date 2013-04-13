@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Game {
 	
-	public String version = "build6";
+	public String version = "build7";  //First stable!
 	
 	public void returnVersion(){
 		
@@ -41,21 +41,27 @@ public class Game {
 				if (a.equals("mar")){
 					World1.setPlayerLocation("Рынок");
 				}	
+				if (a.equals("b")){
+					Player1.PlayerHeal();
+				}
 			}
 			if (World1.getStringLocation().equals("Рынок")){
 				if (a.equals("h")){
 					getHelp(World1.getStringLocation());	
 				}
-				if (a.equals("b")){
+				if (a.equals("q")){
 					World1.setPlayerLocation("Улица");	
 				}
 				if (a.equals("l")){
 					Player1.getPlayerLook(World1);
 				}	
+				if (a.equals("b")){
+					Player1.buyHealer();
+				}
 			}
 		}
 		namescan.close();
-		System.out.print("Конец игры");
+		System.out.print("Конец игры. Вы погибли.");
 	}
 	
 	public void getHelp(String Loc){
@@ -64,13 +70,15 @@ public class Game {
 			System.out.println("   w - прогуляться");
 			System.out.println("   l - осмотреть себя");
 			System.out.println("   h - вызвать справку");
+			System.out.println("   b - выпить пива");
 			System.out.println("   mar - пойти на рынок");
+			
 		}
 		if (Loc.equals("Рынок")){
 			System.out.println(" Справка:");
 			System.out.println("   h - вызвать справку");
 			System.out.println("   l - осмотреть себя");
-			System.out.println("   b - уйти");	
+			System.out.println("   q - уйти");	
 		}
 	}
 }

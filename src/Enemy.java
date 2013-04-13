@@ -29,5 +29,7 @@ public class Enemy {
 	public int getEnemyHealth(){
 		return Health;
 	}
-	
+	public void setEnemyHealth(int hp){
+		Health=hp;
+	}
 }

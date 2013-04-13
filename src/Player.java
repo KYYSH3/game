@@ -5,12 +5,14 @@ import java.util.Scanner;
 public class Player {
 	private String Name;
 	public int Health = 10;
+	public int HealthMax = 10;
 	private long Xp = 0;
 	private long XpLevelMax = 10;
 	private long Level = 1;
 	private long Money = 30;
 	private String Class;
 	private int Strenght;
+	private double Healer = 0.5;
 	
 	public void setPlayerName(String namestr){
 		Name=namestr;
@@ -26,14 +28,17 @@ public class Player {
 		System.out.println("У вас " + Health + " здоровья");
 	}
 	
-	public void getPlayerDamage(int damage) {
-		Health = Health - damage;
-		System.out.println("Вы ударили себя по лицу");
-		getPlayerHealth();
+	public void getPlayerDamage(Enemy Enemy1) {
+		long damage;
+		damage = Enemy1.Level / Level;
+		Health = Health - (int) damage;
+		System.out.println(Enemy1.Class + " нанес вам " + damage + "урона.");
+		System.out.println("У вас осталось " + Health + " здоровья.");
 	}
 	
 	public void increaseXp(long xp){
 		Xp = Xp + xp;
+		
 		increaseLevel();
 	}
 
@@ -89,22 +94,33 @@ public class Player {
 			Enemy1.newEnemyCreate();
 			System.out.println("Вам навстерчу идет "+ Enemy1.Class + " " + Enemy1.Level + "-го уровня");
 			System.out.println("Введите h для помощи в бое");
-			while (Enemy1.getEnemyHealth()>0){
+			while (Enemy1.getEnemyHealth()>0&Health>0){
+				if (Health<=0){
+					Enemy1.setEnemyHealth(0);
+				}
 				Scanner comscan = new Scanner(System.in);
 				b=comscan.next();
 				if (b.equals("h")){
-					
+					getFightHelp();
 				}
 				if (b.equals("k")){
 					DamageEnemy(Enemy1);
+				   	getPlayerDamage(Enemy1);
 				}
 				if (b.equals("l")){
-					this.getPlayerLook(World1);
+						this.getPlayerLook(World1);
+				}
+				if (b.equals("b")){
+					PlayerHeal();
 				}
 			}
-			if (Enemy1.getEnemyHealth()<=0){
-				System.out.println(Enemy1.Class + " умер.");
+			if (Health>0){
+				if (Enemy1.getEnemyHealth()<=0){
+					System.out.println(Enemy1.Class + " умер.");
+					increaseXp(3);
+				}
 			}
+			
 		}
 	}
 	
@@ -121,5 +137,30 @@ public class Player {
 		System.out.println("   h - вызвать справку");
 		System.out.println("   l - осмотреть себя");
 		System.out.println("   k - нанести удар");	
+		System.out.println("   b - выпить пива");	
+	} 
+	
+	public void PlayerHeal(){
+		if (Healer > 0){		
+		Healer = Healer - 0.5;
+		Health = Health + 5;
+			if (Health > HealthMax) {
+				Health = HealthMax;
+			}
+		}
+		else {
+			System.out.println("У вас не осталось пива");
+		}
+	}
+	
+	public void buyHealer(){
+		if (Money >= 5){
+			Money = Money - 5;
+			Healer = Healer + 0.5;
+			System.out.println("Вы купили 0.5л пива");
+		}
+		else {
+			System.out.println("Нехватает денег!");
+		}
 	}
 }
