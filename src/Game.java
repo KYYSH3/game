@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Game {
 	
-	public String version = "build5";
+	public String version = "build6";
 	
 	public void returnVersion(){
 		

@@ -2,7 +2,7 @@ import java.util.Random;
 
 
 public class Enemy {
-	public int Health;
+	private int Health;
 	public int Level;
 	public String Class;
 	
@@ -21,4 +21,13 @@ public class Enemy {
 			Level = 2; //Need to be corrected
 		}
 	}
+	public void getDamage(int damage){
+		Health = Health - damage;
+		System.out.println(Class + " получил "+ damage + " урона");
+		System.out.println("У " + Class + " осталось " + Health + " здоровья");
+	}
+	public int getEnemyHealth(){
+		return Health;
+	}
+	
 }

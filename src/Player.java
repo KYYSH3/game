@@ -9,6 +9,7 @@ public class Player {
 	private long Level = 1;
 	private long Money = 30;
 	private String Class;
+	private int Strenght;
 	
 	public void setPlayerName(String namestr){
 		Name=namestr;
@@ -48,6 +49,7 @@ public class Player {
 		System.out.println("Максиимально на уровне " + XpLevelMax + " опыта");
 		System.out.println("Ваш уровень: " + Level);
 		System.out.println("У вас " + Money + " рублей");
+		System.out.println("Ваша сила: " + Strenght);
 	}
 	
 	public long getlongPlayerMoney(){
@@ -63,12 +65,15 @@ public class Player {
 	public void setPlayerClass(String choice){
 		if (choice.equals("1")){
 			Class = "Студент";
+			Strenght = 10;
 		}
 		if (choice.equals("2")){
 			Class = "Аспирант";
+			Strenght = 15;
 		}
 		else {
 			Class = "Студент";
+			Strenght = 10;
 		}
 	}
 	public void walk(){
@@ -81,6 +86,21 @@ public class Player {
 			Enemy Enemy1 = new Enemy();
 			Enemy1.newEnemyCreate();
 			System.out.println("Вам навстерчу идет "+ Enemy1.Class + " " + Enemy1.Level + "-го уровня");
+			while (Enemy1.getEnemyHealth()>0){
+				DamageEnemy(Enemy1);
+			}
+			if (Enemy1.getEnemyHealth()<=0){
+				System.out.println(Enemy1.Class + " умер.");
+			}
 		}
 	}
+	
+	public void DamageEnemy(Enemy Enemy1){
+		long Damage;	
+		int RealDamage;
+		Damage=(Enemy1.Level / Level * Strenght / 10);
+		RealDamage = (int) Damage;
+		Enemy1.getDamage(RealDamage);
+	}
+	
 }
