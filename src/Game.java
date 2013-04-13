@@ -33,7 +33,7 @@ public class Game {
 					getHelp(World1.getStringLocation());	
 				}
 				if (a.equals("w")){
-					Player1.walk();
+					Player1.walk(World1);
 				}
 				if (a.equals("l")){
 					Player1.getPlayerLook(World1);
@@ -70,7 +70,7 @@ public class Game {
 			System.out.println(" Справка:");
 			System.out.println("   h - вызвать справку");
 			System.out.println("   l - осмотреть себя");
-			System.out.println("   b - уйти");
+			System.out.println("   b - уйти");	
 		}
 	}
 }

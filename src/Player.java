@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Scanner;
 
 
 public class Player {
@@ -76,7 +77,8 @@ public class Player {
 			Strenght = 10;
 		}
 	}
-	public void walk(){
+	public void walk(World World1){
+		String b;
 		Random r = new Random();
 		Float a = r.nextFloat();
 		if (a > 0.7) {
@@ -86,8 +88,19 @@ public class Player {
 			Enemy Enemy1 = new Enemy();
 			Enemy1.newEnemyCreate();
 			System.out.println("Вам навстерчу идет "+ Enemy1.Class + " " + Enemy1.Level + "-го уровня");
+			System.out.println("Введите h для помощи в бое");
 			while (Enemy1.getEnemyHealth()>0){
-				DamageEnemy(Enemy1);
+				Scanner comscan = new Scanner(System.in);
+				b=comscan.next();
+				if (b.equals("h")){
+					
+				}
+				if (b.equals("k")){
+					DamageEnemy(Enemy1);
+				}
+				if (b.equals("l")){
+					this.getPlayerLook(World1);
+				}
 			}
 			if (Enemy1.getEnemyHealth()<=0){
 				System.out.println(Enemy1.Class + " умер.");
@@ -103,4 +116,10 @@ public class Player {
 		Enemy1.getDamage(RealDamage);
 	}
 	
+	private void getFightHelp(){
+		System.out.println(" Справка:");
+		System.out.println("   h - вызвать справку");
+		System.out.println("   l - осмотреть себя");
+		System.out.println("   k - нанести удар");	
+	}
 }
