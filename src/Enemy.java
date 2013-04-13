@@ -3,7 +3,7 @@ import java.util.Random;
 
 public class Enemy {
 	public int Health;
-	private long Level;
+	public int Level;
 	public String Class;
 	
 	public void newEnemyCreate(){
@@ -14,6 +14,11 @@ public class Enemy {
 			Class = "Гопник";
 			Health = 10;
 			Level = 1; //Need to be corrected
+		}
+		else {
+			Class = "Мент";
+			Health = 10;
+			Level = 2; //Need to be corrected
 		}
 	}
 }

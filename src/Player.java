@@ -78,7 +78,9 @@ public class Player {
 			System.out.println("Вы никого не встретили ");
 		}
 		else {
-			//We'll create a new enemy there
+			Enemy Enemy1 = new Enemy();
+			Enemy1.newEnemyCreate();
+			System.out.println("Вам навстерчу идет "+ Enemy1.Class + " " + Enemy1.Level + "-го уровня");
 		}
 	}
 }
