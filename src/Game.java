@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Game {
 	
-	public String version = "build7";  //First stable!
+	public String version = "build8";  //Added money drop
 	
 	public void returnVersion(){
 		

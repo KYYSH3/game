@@ -20,12 +20,9 @@ public class Player {
 	public void getPlayerLook(World getworld){
 		getworld.getPlayerLocation();
 		System.out.println(Name + ", " + Class);
-		getPlayerHealth();
-		getPlayerXp_Level();
-	}
-	
-	private void getPlayerHealth(){
-		System.out.println("У вас " + Health + " здоровья");
+		System.out.println("HP: " + Health + "\\" + HealthMax + ". XP: "+ Xp + "\\" + XpLevelMax + ". LV: " + Level);
+		System.out.println("STR: " + Strenght);
+		System.out.println("У вас " + Money + " рублей");
 	}
 	
 	public void getPlayerDamage(Enemy Enemy1) {
@@ -38,7 +35,6 @@ public class Player {
 	
 	public void increaseXp(long xp){
 		Xp = Xp + xp;
-		
 		increaseLevel();
 	}
 
@@ -49,13 +45,6 @@ public class Player {
 			Level = Level + 1;
 			System.out.println("Вы получили уровень " + Level);
 		}
-	}
-	private void getPlayerXp_Level(){
-		System.out.println("У вас " + Xp + " опыта");
-		System.out.println("Максиимально на уровне " + XpLevelMax + " опыта");
-		System.out.println("Ваш уровень: " + Level);
-		System.out.println("У вас " + Money + " рублей");
-		System.out.println("Ваша сила: " + Strenght);
 	}
 	
 	public long getlongPlayerMoney(){
@@ -91,6 +80,7 @@ public class Player {
 		}
 		else {
 			Enemy Enemy1 = new Enemy();
+			Menu Menu2 = new Menu();
 			Enemy1.newEnemyCreate();
 			System.out.println("Вам навстерчу идет "+ Enemy1.Class + " " + Enemy1.Level + "-го уровня");
 			System.out.println("Введите h для помощи в бое");
@@ -100,27 +90,27 @@ public class Player {
 				}
 				Scanner comscan = new Scanner(System.in);
 				b=comscan.next();
-				if (b.equals("h")){
-					getFightHelp();
-				}
-				if (b.equals("k")){
-					DamageEnemy(Enemy1);
-				   	getPlayerDamage(Enemy1);
-				}
-				if (b.equals("l")){
-						this.getPlayerLook(World1);
-				}
-				if (b.equals("b")){
-					PlayerHeal();
-				}
+				Menu2.getFightMenu(b, this, Enemy1, World1);
 			}
 			if (Health>0){
 				if (Enemy1.getEnemyHealth()<=0){
 					System.out.println(Enemy1.Class + " умер.");
 					increaseXp(3);
+
+					getMoney();
 				}
 			}
 			
+		}
+	}
+	
+	public void getMoney(){
+		int max, addMoney;
+		max = 10;
+		addMoney = (int) (Math.random() * max);
+		if (addMoney!=0) {
+			System.out.println("Вы подняли " + addMoney + " Рублей");
+			Money = Money + addMoney;
 		}
 	}
 	
@@ -132,13 +122,7 @@ public class Player {
 		Enemy1.getDamage(RealDamage);
 	}
 	
-	private void getFightHelp(){
-		System.out.println(" Справка:");
-		System.out.println("   h - вызвать справку");
-		System.out.println("   l - осмотреть себя");
-		System.out.println("   k - нанести удар");	
-		System.out.println("   b - выпить пива");	
-	} 
+
 	
 	public void PlayerHeal(){
 		if (Healer > 0){		
