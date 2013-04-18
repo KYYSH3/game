@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Game {
 	
-	public String version = "build8";  //Added money drop
+	public String version = "build9";  //Added random mob level; DAMAGE SYSTEM NEED TO BE FIXED!!!
 	
 	public void returnVersion(){
 		
@@ -29,7 +29,7 @@ public class Game {
 		Player1.setPlayerClass(namescan.next());
 		System.out.println("¬ведите h чтобы увидеть список команд");
 		Menu MainMenu = new Menu();
-		while (Player1.Health != 0) {
+		while (Player1.Health > 0) {
 			a=namescan.next();
 			Location = World1.getStringLocation();
 			MainMenu.getGameMenu(Location, World1, Player1, a);

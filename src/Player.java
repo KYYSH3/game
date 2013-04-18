@@ -17,19 +17,24 @@ public class Player {
 	public void setPlayerName(String namestr){
 		Name=namestr;
 	}
+	
+	public long retPlayerLevel(){
+		return Level;
+	}
+	
 	public void getPlayerLook(World getworld){
 		getworld.getPlayerLocation();
 		System.out.println(Name + ", " + Class);
 		System.out.println("HP: " + Health + "\\" + HealthMax + ". XP: "+ Xp + "\\" + XpLevelMax + ". LV: " + Level);
 		System.out.println("STR: " + Strenght);
-		System.out.println("У вас " + Money + " рублей");
+		System.out.println("У вас " + Money + " рублей; " + Healer + " литров пива");
 	}
 	
 	public void getPlayerDamage(Enemy Enemy1) {
 		long damage;
 		damage = Enemy1.Level / Level;
 		Health = Health - (int) damage;
-		System.out.println(Enemy1.Class + " нанес вам " + damage + "урона.");
+		System.out.println(Enemy1.Class + " нанес вам " + damage + " урона.");
 		System.out.println("У вас осталось " + Health + " здоровья.");
 	}
 	
@@ -81,7 +86,7 @@ public class Player {
 		else {
 			Enemy Enemy1 = new Enemy();
 			Menu Menu2 = new Menu();
-			Enemy1.newEnemyCreate();
+			Enemy1.newEnemyCreate(this);
 			System.out.println("Вам навстерчу идет "+ Enemy1.Class + " " + Enemy1.Level + "-го уровня");
 			System.out.println("Введите h для помощи в бое");
 			while (Enemy1.getEnemyHealth()>0&Health>0){
@@ -96,7 +101,6 @@ public class Player {
 				if (Enemy1.getEnemyHealth()<=0){
 					System.out.println(Enemy1.Class + " умер.");
 					increaseXp(3);
-
 					getMoney();
 				}
 			}
@@ -131,6 +135,7 @@ public class Player {
 			if (Health > HealthMax) {
 				Health = HealthMax;
 			}
+			System.out.println("У вас осталось " + Healer  + " л. пива");
 		}
 		else {
 			System.out.println("У вас не осталось пива");
