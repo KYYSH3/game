@@ -32,10 +32,16 @@ public class Player {
 	
 	public void getPlayerDamage(Enemy Enemy1) {
 		long damage;
-		damage = Enemy1.Level / Level;
-		Health = Health - (int) damage;
-		System.out.println(Enemy1.Class + " нанес вам " + damage + " урона.");
-		System.out.println("У вас осталось " + Health + " здоровья.");
+		damage = (long) ((Enemy1.Level / Level) + ((Math.random() * 4) - 2));
+		if (damage>0) {
+			Health = Health - (int) damage;
+			System.out.println(Enemy1.Class + " нанес вам " + damage + " урона.");
+			System.out.println("У вас осталось " + Health + " здоровья.");
+		}
+		else {
+			System.out.println(Enemy1.Class + " промахнулся.");
+		}
+
 	}
 	
 	public void increaseXp(long xp){
@@ -119,11 +125,18 @@ public class Player {
 	}
 	
 	public void DamageEnemy(Enemy Enemy1){
-		long Damage;	
+		double Damage;	
 		int RealDamage;
-		Damage=(Enemy1.Level / Level * Strenght / 10);
-		RealDamage = (int) Damage;
-		Enemy1.getDamage(RealDamage);
+		Damage=((Level / Enemy1.Level) * (Strenght / 10) * 2) +  (Math.random() * 4) - 1;
+		//System.out.println(Damage);
+		if (Damage >= 0.5){
+			RealDamage = (int) Math.round(Damage) ;
+			Enemy1.getDamage(RealDamage);
+		}
+		else {
+			
+			System.out.println("Вы промахнулись");
+		}
 	}
 	
 

@@ -32,7 +32,7 @@ public class Enemy {
 		Health=hp;
 	}
 	private void setEnemyLevel(Player player1){
-		Level=(int)player1.retPlayerLevel()+(int) (Math.random()*6 - 3);
+		Level=(int) (player1.retPlayerLevel()+ ((Math.random()*6) - 3));
 		if (Level<=0){
 			Level = 1;
 		}

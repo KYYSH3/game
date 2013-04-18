@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Game {
 	
-	public String version = "build9";  //Added random mob level; DAMAGE SYSTEM NEED TO BE FIXED!!!
+	public String version = "build10";  //Fixed and improved damage system (stable)
 	
 	public void returnVersion(){
 		

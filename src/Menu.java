@@ -43,7 +43,9 @@ public class Menu {
 		}
 		if (b.equals("k")){
 			Player1.DamageEnemy(Enemy1);
-		   	Player1.getPlayerDamage(Enemy1);
+			if (Enemy1.getEnemyHealth()>0){
+				Player1.getPlayerDamage(Enemy1);
+			}
 		}
 		if (b.equals("l")){
 				Player1.getPlayerLook(World1);
